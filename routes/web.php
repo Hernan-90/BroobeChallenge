@@ -14,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [MetricController::class, 'index'])->name('home');
-Route::post('/', [MetricController::class, 'requestMetrics'])->name('show');
+Route::get('/', function(){ return view('index');})->name('index');
+
+Route::get('/home', [MetricController::class, 'index'])->name('home');
+Route::post('/home', [MetricController::class, 'requestMetrics'])->name('show');
 Route::post('/store', [MetricController::class, 'storeMetrics'])->name('store');
 Route::get('/history', [MetricController::class, 'showHistory'])->name('history');
 

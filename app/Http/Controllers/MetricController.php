@@ -14,7 +14,7 @@ class MetricController extends Controller
         $categories = Category::all();
         $strategies = Strategy::all();
 
-        return view('index', [
+        return view('sections.home', [
             'categories' => $categories,
             'strategies' => $strategies,
         ]);
@@ -60,7 +60,7 @@ class MetricController extends Controller
     public function showHistory(){
         $metricsHistory = MetricHistoryRun::all();
 
-        return view('full', [
+        return view('sections.history', [
             'history' => $metricsHistory,
         ]);
     }
