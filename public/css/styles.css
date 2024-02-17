@@ -51,6 +51,7 @@ li {
   font-size: 2.5rem;
   font-weight: 500;
   padding: 0.5rem 1.2rem;
+  text-transform: uppercase;
 }
 
 /* ----------- NAVBAR ------------ */
@@ -160,8 +161,8 @@ em {
 
 .form-container {
   font-size: 2.5rem;
-  width: 100%;
-  box-shadow: 0 5px 20px 0 rgba(0,0,0,0.2);
+  /* width: 100%; */
+  /* box-shadow: 0 5px 20px 0 rgba(0,0,0,0.2); */
   border-radius: 1rem;
   border: 2px solid #2a6279;
   padding: 2.5rem 3rem;
@@ -172,7 +173,7 @@ em {
   align-items: flex-end;
   gap: 3rem;
 
-  margin-bottom: 7rem;
+  margin-bottom: 5rem;
 }
 
 .row {
@@ -235,14 +236,14 @@ em {
   font-size: 2rem;
 }
 
-.btn-metrics {
+.btn-metrics, .btn-save {
   border: 1.5px solid #2a6279;
   background-color: #2a6279;
   color: #fff;
   transition: all 0.3s;
 }
 
-.btn-metrics:hover {
+.btn-metrics:hover, .btn-save:hover {
   border: 1.5px solid #53c4f1;
   background-color: #53c4f1;
   color: #fff;
@@ -299,16 +300,32 @@ em {
 }
 
 .score-card {
+  width: 28rem;
+  padding: 2rem;
+  color: #fff;
   font-size: 3rem;
   text-align: center;
-  color: #fff;
-  padding: 2rem;
   border-radius: 1rem;
-  width: 22.5rem;
+  box-shadow: 0 5px 20px 0 rgba(0,0,0,0.2);
 }
 
 .score-card:not(:last-child) {
   margin-right: 2.5rem;
+}
+
+.card-img {
+  width: 5rem;
+  height: 5rem;
+}
+
+.score-category {
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.score-value {
+  font-size: 4rem;
+  font-weight: 600;
 }
 
 .performance-style {
@@ -316,7 +333,7 @@ em {
 }
 
 .accessibility-style {
-  background: linear-gradient(to right bottom, #e8d8e4, #D1B1C8);
+  background: linear-gradient(to right bottom, #d2b7d7, #A56FAE);
 }
 
 .best-practices-style {
@@ -329,6 +346,10 @@ em {
 
 .pwa-style {
   background: linear-gradient(to right bottom, #f2929a, #E94957);
+}
+
+.scores-metric {
+  margin-bottom: 4rem;
 }
 
 /* ------------ HISTORY ----------- */

@@ -7,7 +7,7 @@
             <div class="row centered">
                 <div class="side-70">
                     <label for="url" class="label">URL:</label>
-                    <input id="url" name="url" type="text" class="url-input" value="https://Broobe.com" required>
+                    <input id="url" name="url" type="text" class="url-input" value="https://broobe.com" required>
                 </div>
                 <div class="side-30">
                     <label for="strategy" class="label">STRATEGY:</label>
@@ -30,14 +30,14 @@
                     @endforeach
                 </div>
             </div>
-            <button id="btn_submit" class="btn btn-metrics">Get metrics</button>
+            <button id="btn_submit" class="btn btn-metrics">GET METRICS</button>
         </form>
 
         <div class="score-container centered">
-            <h2 class="score-title">Metrics Scores:</h2>
+            <h2 class="score-title">Metric Scores:</h2>
             <div class="lds-ring" id="spinner"><div></div><div></div><div></div><div></div></div>
-            <div id="categories-container" class="centered"></div>
-            <button id="btn_save">Save Metric Run</button>
+            <div id="categories-container" class="centered scores-metric"></div>
+            <button id="btn_save" class="btn btn-save">Save Metric Run</button>
         </div>
     </section>
 
@@ -63,9 +63,9 @@
                         const {id, title, score} = categories[category]
                         categoryContainer.innerHTML += `
                             <div class="score-card ${id}-style">
-                                <img src="{{ asset('img/${id}.png') }}" alt="">
-                                <p>${title}</p>
-                                <p id=${id}>${score}</p>
+                                <img src="{{ asset('img/${id}.png') }}" alt="" class="card-img">
+                                <p class="score-category">${title}</p>
+                                <p id=${id} class="score-value">${score}</p>
                             </div>
                         `
                     }
