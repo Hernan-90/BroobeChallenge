@@ -1,68 +1,79 @@
 @extends('layouts.principal')
 
 @section('content')
-    <form action={{ route('show') }} method="post" id="metrics-form" class="form-container">
-        @csrf
-        <div class="centered">
-            <div>
-                <label for="url">URL:</label>
-                <input id="url" name="url" type="text" value="https://Broobe.com">
+    <section class="metric-section centered">
+        <form action={{ route('show') }} method="post" id="metrics-form" class="form-container">
+            @csrf
+            <div class="row centered">
+                <div class="side-70">
+                    <label for="url" class="label">URL:</label>
+                    <input id="url" name="url" type="text" class="url-input" value="https://Broobe.com" required>
+                </div>
+                <div class="side-30">
+                    <label for="strategy" class="label">STRATEGY:</label>
+                    <select name="strategy" id="strategy" class="select-input" required>
+                            <option value="" selected>Choose one</option>
+                        @foreach($strategies as $strategy)
+                            <option value={{ $strategy->name }}> {{ $strategy->name }} </option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
-            <div>
-                <label for="strategy">STRATEGY:</label>
-                <select name="strategy" id="strategy">
-                        <option value="" selected>Choose one</option>
-                    @foreach($strategies as $strategy)
-                        <option value={{ $strategy->name }}> {{ $strategy->name }} </option>
+            <div class="row">
+                <label for="" class="label">CATEGORIES:</label>
+                <div class="centered check-container">
+                    @foreach ($categories as $category)
+                        <div class="centered">
+                            <input type="checkbox" name="category[]" class="checkbox-input" value={{ $category->name }} class>
+                            <label for="category" class="check-label">{{ $category->name }}</label>
+                        </div>
                     @endforeach
-                </select>
+                </div>
             </div>
-        </div>
-        <div>
-            <label for="">CATEGORIES:</label>
-            <div class="centered">
-                @foreach ($categories as $category)
-                    <div>
-                        <input type="checkbox" name="category[]" value={{ $category->name }}>
-                        <label for="category">{{ $category->name }}</label>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-        <button id="btn_submit">Get metrics</button>
-    </form>
+            <button id="btn_submit" class="btn btn-metrics">Get metrics</button>
+        </form>
 
-    <section>
-        <div id="categories-container"></div>
-        <button id="btn_save">Save Metric Run</button>
+        <div class="score-container centered">
+            <h2 class="score-title">Metrics Scores:</h2>
+            <div class="lds-ring" id="spinner"><div></div><div></div><div></div><div></div></div>
+            <div id="categories-container" class="centered"></div>
+            <button id="btn_save">Save Metric Run</button>
+        </div>
     </section>
 
     <script>
         $('#btn_save').hide()
-        $('#metrics-form').on('submit', function(e) {
-            const categoryContainer = document.getElementById('categories-container')
+        $('#spinner').hide()
 
+        $('#metrics-form').on('submit', function(e) {
             e.preventDefault()
+            $('#spinner').show()
+            const categoryContainer = document.getElementById('categories-container')
+            categoryContainer.innerHTML = ''
+            $('#btn_save').hide()
+
             $.ajax({
                 url: "{{ route('show') }}",
                 type: "POST",
                 headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
                 data: $(this).serialize(),
                 success: function({lighthouseResult}) {
-                    categoryContainer.innerHTML = ''
                     const {categories} = lighthouseResult
                     for (const category in categories) {
                         const {id, title, score} = categories[category]
                         categoryContainer.innerHTML += `
-                            <div>
+                            <div class="score-card ${id}-style">
+                                <img src="{{ asset('img/${id}.png') }}" alt="">
                                 <p>${title}</p>
                                 <p id=${id}>${score}</p>
                             </div>
                         `
                     }
                     $('#btn_save').show()
+                    $('#spinner').hide()
                 },
                 error: function(xhr, status, error) {
+                    $('#spinner').hide()
                     console.error('AJAX Request Error:', status, error);
                 }
             });
