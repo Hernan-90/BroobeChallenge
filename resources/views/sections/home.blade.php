@@ -41,15 +41,21 @@
         </div>
     </section>
 
+    <div class="modal-container centered" id="modal"></div>
+
     <script>
         $('#btn_save').hide()
         $('#spinner').hide()
+        $('#modal').hide()
 
         $('#metrics-form').on('submit', function(e) {
             e.preventDefault()
-            $('#spinner').show()
             const categoryContainer = document.getElementById('categories-container')
             categoryContainer.innerHTML = ''
+            const modalContent = document.getElementById('modal')
+            modalContent.innerHTML = ''
+            
+            $('#spinner').show()
             $('#btn_save').hide()
 
             $.ajax({
@@ -72,14 +78,17 @@
                     $('#btn_save').show()
                     $('#spinner').hide()
                 },
-                error: function({responseJSON}, status, error) {
+                error: function({responseJSON}, status) {
                     $('#spinner').hide()
-                    console.log(status, responseJSON.message);
+                    showModal( modalContent, status, responseJSON.message)
                 }
             });
         });
 
         $('#btn_save').on('click', function () {
+            const modalContent = document.getElementById('modal')
+            modalContent.innerHTML = ''
+
             const data = {
                 url: document.getElementById('url').value,
                 accessibility_metric: document.getElementById('accessibility') ? document.getElementById('accessibility').textContent : null,
@@ -95,13 +104,33 @@
                 type: "POST",
                 headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
                 data: data,
-                success: function(response) {
-                    // console.log(response);
+                success: function(data, status) {
+                    showModal( modalContent, status, data)
                 },
-                error: function({responseJSON}, status, error) {
-                    console.log(status, responseJSON.message);
+                error: function({responseJSON}, status) {
+                    showModal( modalContent, status, responseJSON.message)
                 }
             });
+        })
+        
+        const showModal = ( node, status, msg ) => {
+            $('#modal').show()
+            node.innerHTML = `
+                <div class="modal-card">
+                    <div class="modal-img-container centered ${status}">
+                        <img src="{{ asset('img/${status}.png') }}" alt="Tour photo" class="modal-img">
+                        <h2 class="modal-title">${status}</h2>
+                    </div>
+                    <div class="modal-info-container centered">
+                        <p class="modal-text">${msg}</p>
+                        <a href="#" class="btn btn-modal" onclick="modalClose()">close</a>
+                    </div>
+                </div>
+            `
+        }
+
+        $('#modal').on('click', function () {
+            $('#modal').hide()
         })
     </script>
 @endsection

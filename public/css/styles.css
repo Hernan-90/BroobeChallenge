@@ -237,14 +237,14 @@ li {
   font-size: 2rem;
 }
 
-.btn-metrics, .btn-save {
+.btn-metrics, .btn-save, .btn-modal {
   border: 1.5px solid #2a6279;
   background-color: #2a6279;
   color: #fff;
   transition: all 0.3s;
 }
 
-.btn-metrics:hover, .btn-save:hover {
+.btn-metrics:hover, .btn-save:hover, .btn-modal:hover {
   border: 1.5px solid #53c4f1;
   background-color: #53c4f1;
   color: #fff;
@@ -442,3 +442,66 @@ footer {
   text-align: center;
   height: 3rem;
 }
+
+/* ------------ FOOTER ----------- */
+.modal-container {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0, .5);
+  z-index: 5000;
+  transition: all .3s;
+}
+
+.modal-card {
+  /* height: 45rem; */
+  width: 20%;
+  background-color: #fff;
+  box-shadow: 0 2rem 4rem rgba(0,0,0, .2);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  transition: all .2s .2s;
+}
+
+.modal-img-container, .modal-info-container {
+  padding: 3rem;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.modal-img-container {
+  height: 40%;
+}
+
+.modal-info-container {
+  height: 60%;
+  gap: 3rem;
+}
+
+.success {
+  background-color: #55c57a;
+}
+
+.error {
+  background-color: #CD1F13;
+}
+
+.modal-img {
+  width: 6rem;
+  height: 6rem;
+}
+
+.modal-title {
+  font-size: 3rem;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.modal-text {
+    font-size: 2rem;
+    font-weight: 500;
+    /* text-align: justify; */
+    /* margin-bottom: 4rem; */
+  }
