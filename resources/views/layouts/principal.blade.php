@@ -13,6 +13,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/queries.css') }}">
     </head>
     <body >
         <header class="header-section centered">
@@ -24,7 +25,7 @@
                 <li><a href={{ route('history') }} class="navLink {{ Route::currentRouteName() === 'history' ? 'active' : '' }}">Metric History</a></li>
             </ul>
         </header>
-        <main class="main-section centered">
+        <main>
             @yield('content')
         </main>
         @include('sections.footer')

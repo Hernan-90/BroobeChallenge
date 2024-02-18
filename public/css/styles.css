@@ -95,9 +95,9 @@ li {
 
 /* ------------ INDEX ----------- */
 .main-section {
-  height: 85vh;
   margin: 0 20rem;
   gap: 5rem;
+  padding: 20rem 0;
 }
 
 .home-side {
@@ -162,8 +162,6 @@ li {
 
 .form-container {
   font-size: 2.5rem;
-  /* width: 100%; */
-  /* box-shadow: 0 5px 20px 0 rgba(0,0,0,0.2); */
   border-radius: 1rem;
   border: 2px solid #2a6279;
   padding: 2.5rem 3rem;
@@ -354,6 +352,10 @@ li {
 }
 
 /* ------------ HISTORY ----------- */
+.history-section {
+  padding: 10rem 0;
+}
+
 .table-container {
   height: 45rem;
   border: 1px solid #2a6279;
@@ -396,6 +398,8 @@ footer {
   color: #fff;
   font-size: 1.5rem;
   background-color: #112730;
+  position: absolute;
+  bottom: -10rem;
 
   display: flex;
   flex-direction: column;
@@ -443,7 +447,7 @@ footer {
   height: 3rem;
 }
 
-/* ------------ FOOTER ----------- */
+/* ------------ MODAL ----------- */
 .modal-container {
   height: 100vh;
   width: 100%;
@@ -456,7 +460,6 @@ footer {
 }
 
 .modal-card {
-  /* height: 45rem; */
   width: 20%;
   background-color: #fff;
   box-shadow: 0 2rem 4rem rgba(0,0,0, .2);
@@ -502,6 +505,4 @@ footer {
 .modal-text {
     font-size: 2rem;
     font-weight: 500;
-    /* text-align: justify; */
-    /* margin-bottom: 4rem; */
   }

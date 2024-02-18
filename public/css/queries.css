@@ -1,0 +1,48 @@
+@media(max-width: 1400px) {
+  .navLink:link, .navLink:visited {
+    font-size: 1.6rem;
+    font-weight: 500;
+  }
+
+  .navLink::before {
+    bottom: -.5rem;
+    height: 2px;
+  }
+
+  .main-section {
+    padding: 11rem 0;
+  }
+
+  .title {
+    font-size: 7rem;
+    line-height: 6rem;
+    margin-bottom: 1rem;
+  }
+
+  .subTitle {
+    font-size: 6rem;
+    margin-bottom: 3rem;
+  }
+
+  .description {
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+  }
+
+  .table-container {
+    height: 30rem;
+  }
+
+  .table {
+    font-size: 1.5rem;
+  }
+
+  footer {
+    font-size: 1.2rem;
+  }
+
+  .footer-title {
+    font-size: 1.6rem;
+  }
+
+}
