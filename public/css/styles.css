@@ -143,6 +143,7 @@ li {
 
 .btn-comenzar {
   transition: all 0.3s;
+  color: #2a6279;
 }
 
 .btn-comenzar:hover {
