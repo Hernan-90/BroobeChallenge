@@ -19,7 +19,6 @@ body {
 
 a:link, a:visited {
   text-decoration: none;
-  color: #2a6279;
 }
 
 li {
@@ -72,6 +71,7 @@ li {
   font-size: 2rem;
   font-weight: 600;
   text-transform: uppercase;
+  color: #2a6279;
 }
 
 .navLink::before {
@@ -95,7 +95,7 @@ li {
 
 /* ------------ INDEX ----------- */
 .main-section {
-  height: 80vh;
+  height: 85vh;
   margin: 0 20rem;
   gap: 5rem;
 }
@@ -125,7 +125,7 @@ li {
   color: #000;
 }
 
-em {
+.italic {
   color: #2a6279;
 }
 
@@ -354,10 +354,10 @@ em {
 
 /* ------------ HISTORY ----------- */
 .table-container {
-  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
-  border-radius: 1rem;
-  padding: 1.5rem 2rem;
   height: 45rem;
+  border: 1px solid #2a6279;
+  border-radius: 1rem;
+  overflow: hidden;
 }
 
 .table {
@@ -367,11 +367,18 @@ em {
 }
 
 .table-head {
+  color: #fff;
   padding: 0 2rem;
+  background-color: #2a6279;
   border-bottom: 1px solid #2a6279;
+  height: 3rem;
 }
 
-.table-head:not(:last-child), .table-value:not(:last-child) {
+.table-head:not(:last-child) {
+  border-right: 1px solid #fff;
+}
+
+.table-value:not(:last-child) {
   border-right: 1px solid #2a6279;
 }
 
@@ -381,4 +388,56 @@ em {
 
 .table-value {
   padding: 0.5rem 1.5rem;
+}
+
+/* ------------ FOOTER ----------- */
+footer {
+  color: #fff;
+  font-size: 1.5rem;
+  background-color: #112730;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.footer-content{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.dev-data {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dev-links {
+  display: flex;
+  margin-top: 2rem;
+  gap: 2.5rem;
+}
+
+.dev-link {
+  color: #fff;
+}
+
+.p-5 {
+  padding: 2.5rem 5rem;
+}
+
+.footer-title {
+  font-size: 2rem;
+}
+
+.footer-rights {
+  border-top: 1.5px solid #bbb;
+  text-align: center;
+  height: 3rem;
 }

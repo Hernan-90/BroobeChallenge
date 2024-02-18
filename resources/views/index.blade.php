@@ -7,7 +7,7 @@
     </div>
     <div class="home-side">
         <p class="description">
-            El siguiente challenge consta de desarrollar un sistema que permita utilizar la API de <em><b>google speed page insights</b></em> para mostrar las métricas principales de las categorías seleccionadas.
+            El siguiente challenge consta de desarrollar un sistema que permita utilizar la API de <em class="italic"><b>google speed page insights</b></em> para mostrar las métricas principales de las categorías seleccionadas.
         </p>
         <a href="{{ route('home') }}" class="btn btn-comenzar">COMENZAR!</a>
     </div>

@@ -27,5 +27,6 @@
         <main class="main-section centered">
             @yield('content')
         </main>
+        @include('sections.footer')
     </body>
 </html>
