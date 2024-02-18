@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MetricStoreRequest;
 use App\Models\Category;
 use App\Models\MetricHistoryRun;
 use App\Models\Strategy;
@@ -21,6 +22,10 @@ class MetricController extends Controller
     }
 
     public function requestMetrics(Request $request){
+        $validatedData = $request->validate([
+            'category' => 'required|array',
+        ]);
+
         $providedUrl = $request->url;
         $providedCategories = $request->category;
         $selectedStrategy = $request->strategy;
@@ -41,20 +46,10 @@ class MetricController extends Controller
         return json_decode($data);
     }
 
-    public function storeMetrics(Request $request){
-        $algo = new MetricHistoryRun();
+    public function storeMetrics(MetricStoreRequest $request){
+        MetricHistoryRun::create($request->all());
 
-        $algo->url = $request->url;
-        $algo->accessibility_metric = $request->accessibility;
-        $algo->best_practices_metric = $request->bestpractices;
-        $algo->performance_metric = $request->performance;
-        $algo->pwa_metric = $request->pwa;
-        $algo->seo_metric = $request->seo;
-        $algo->strategy_id = $request->strategy;
-
-        $algo->save();
-
-        return response()->json('excelente pa', 200);
+        return response()->json('Los valores han sido guardados exitosamente', 200);
     }
 
     public function showHistory(){

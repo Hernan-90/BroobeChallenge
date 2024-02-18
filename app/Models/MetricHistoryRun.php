@@ -15,7 +15,7 @@ class MetricHistoryRun extends Model
         'url',
         'accessibility_metric',
         'best_practices_metric',
-        'performance',
+        'performance_metric',
         'pwa_metric',
         'seo_metric',
         'strategy_id',

@@ -72,9 +72,9 @@
                     $('#btn_save').show()
                     $('#spinner').hide()
                 },
-                error: function(xhr, status, error) {
+                error: function({responseJSON}, status, error) {
                     $('#spinner').hide()
-                    console.error('AJAX Request Error:', status, error);
+                    console.log(status, responseJSON.message);
                 }
             });
         });
@@ -82,12 +82,12 @@
         $('#btn_save').on('click', function () {
             const data = {
                 url: document.getElementById('url').value,
-                performance: document.getElementById('performance') ? document.getElementById('performance').textContent : null,
-                accessibility: document.getElementById('accessibility') ? document.getElementById('accessibility').textContent : null,
-                bestpractices: document.getElementById('best-practices') ? document.getElementById('best-practices').textContent : null,
-                seo: document.getElementById('seo') ? document.getElementById('seo').textContent : null,
-                pwa: document.getElementById('pwa') ? document.getElementById('pwa').textContent : null,
-                strategy: document.getElementById('strategy').value == 'DESKTOP' ? 1 : 2,
+                accessibility_metric: document.getElementById('accessibility') ? document.getElementById('accessibility').textContent : null,
+                best_practices_metric: document.getElementById('best-practices') ? document.getElementById('best-practices').textContent : null,
+                performance_metric: document.getElementById('performance') ? document.getElementById('performance').textContent : null,
+                pwa_metric: document.getElementById('pwa') ? document.getElementById('pwa').textContent : null,
+                seo_metric: document.getElementById('seo') ? document.getElementById('seo').textContent : null,
+                strategy_id: document.getElementById('strategy').value == 'DESKTOP' ? 1 : 2,
             }
 
             $.ajax({
@@ -98,8 +98,8 @@
                 success: function(response) {
                     // console.log(response);
                 },
-                error: function(xhr, status, error) {
-                    console.error('AJAX Request Error:', status, error);
+                error: function({responseJSON}, status, error) {
+                    console.log(status, responseJSON.message);
                 }
             });
         })
